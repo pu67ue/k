@@ -5,25 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>สุขสันต์วันครบรอบ</title>
   <style>
-    /* กำหนดตัวแปรสีตามภาพ Color Palette */
+    /* กำหนดตัวแปรสีให้สว่าง อ่อนหวาน และละมุนยิ่งขึ้น */
     :root {
-      --pine-tree: #2A342B;
-      --kombu-green: #354231;
-      --dingley: #5C7859;
-      --brandy: #DEC7A6;
-      --pale-copper: #C08267;
-      --bg-cream: #F5F2EB;
+      --bg-body: #F4EFEA;         /* สีพื้นหลังภายนอกอ่อนๆ */
+      --card-bg: #FCF9F5;         /* สีพื้นหลังการ์ดโทนสว่างนุ่มนวล */
+      --primary-text: #4A5D4E;    /* สีเขียวเข้มสบายตา */
+      --secondary-text: #C47B5E;  /* สีส้มอิฐพาสเทลอ่อน */
+      --border-color: #E6D8C8;    /* สีเส้นขอบครีมอ่อน */
+      --btn-bg: #78937A;          /* สีปุ่มกด */
+      --btn-hover: #5A735C;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Kalam', 'Chakra Petch', 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      background-color: var(--pine-tree);
+      background-color: var(--bg-body);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,36 +34,35 @@
 
     /* การ์ดความรักตรงกลาง */
     .card {
-      background: var(--bg-cream);
+      background: var(--card-bg);
       width: 100%;
-      max-width: 500px;
-      padding: 40px 25px;
+      max-width: 450px;
+      padding: 50px 30px;
       border-radius: 24px;
-      border: 3px solid var(--kombu-green);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
       text-align: center;
-      position: relative;
     }
 
     /* ข้อความหัวข้อ */
     .title {
       font-size: 26px;
       font-weight: 700;
-      color: var(--kombu-green);
+      color: var(--primary-text);
       margin-bottom: 20px;
       line-height: 1.4;
     }
 
     .subtitle {
       font-size: 22px;
-      color: var(--pale-copper);
-      margin-bottom: 15px;
+      color: var(--secondary-text);
       font-weight: 600;
+      margin-top: 10px;
     }
 
     /* ช่องกรอกรหัสผ่าน */
     .input-group {
-      margin: 25px 0;
+      margin: 30px 0;
     }
 
     .passcode-input {
@@ -72,70 +72,51 @@
       text-align: center;
       font-size: 24px;
       letter-spacing: 8px;
-      border: 2px solid var(--brandy);
+      border: 1.5px solid var(--border-color);
       border-radius: 12px;
       outline: none;
       background-color: #ffffff;
-      color: var(--pine-tree);
+      color: var(--primary-text);
+      transition: border-color 0.2s;
     }
 
     .passcode-input:focus {
-      border-color: var(--dingley);
+      border-color: var(--btn-bg);
     }
 
-    /* ปุ่มกด UNLOCK */
+    /* ปุ่มกด */
     .unlock-btn {
-      background-color: var(--dingley);
+      background-color: var(--btn-bg);
       color: #ffffff;
       border: none;
       padding: 12px 35px;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       letter-spacing: 1px;
       border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(92, 120, 89, 0.4);
+      box-shadow: 0 4px 12px rgba(120, 147, 122, 0.25);
       transition: all 0.2s ease;
     }
 
     .unlock-btn:hover {
-      background-color: var(--kombu-green);
-      transform: translateY(-2px);
+      background-color: var(--btn-hover);
+      transform: translateY(-1px);
     }
 
     .unlock-btn:active {
       transform: scale(0.98);
     }
 
-    /* ส่วนแสดงผลความรัก (หน้าสอง) */
+    /* ส่วนแสดงผลหลังใส่รหัสผ่านถูก (หน้าสอง) */
     .content-screen {
       display: none;
       animation: fadeIn 0.8s ease-in-out;
-    }
-
-    /* การจัดวางรูปภาพตามภาพที่ 2 */
-    .image-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 30px;
-      gap: 10px;
-    }
-
-    .pig-img {
-      width: 30%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .flower-img {
-      width: 35%;
-      height: auto;
-      object-fit: contain;
+      padding: 20px 0;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
@@ -162,25 +143,13 @@
     <div id="flower-screen" class="content-screen">
       <div class="title">สุขสันต์วันครบรอบนะ เรน</div>
       <div class="subtitle">รักมากๆ นะ</div>
-
-      <!-- ส่วนของรูปภาพตามเลย์เอาต์ -->
-      <div class="image-container">
-        <!-- หมูตัวซ้าย -->
-        <img src="pig-left.png" alt="Pig Left" class="pig-img" />
-        
-        <!-- ดอกไม้ตรงกลาง -->
-        <img src="flowers.png" alt="Tulips" class="flower-img" />
-        
-        <!-- หมูตัวขวา -->
-        <img src="pig-right.png" alt="Pig Right" class="pig-img" />
-      </div>
     </div>
   </div>
 
   <script>
     function checkPasscode() {
       const input = document.getElementById('passcode').value;
-      // รหัสผ่านตามที่กำหนดในรูปภาพ
+      // รหัสผ่านปลดล็อก
       const correctPasscode = "140224"; 
 
       if (input === correctPasscode) {
